@@ -1,0 +1,24 @@
+PLINK v1.90b7.2 64-bit (11 Dec 2023)
+Options in effect:
+  --bfile ../data/Qatari156_filtered_pruned
+  --missing
+  --out outputs/miss
+
+Hostname: Seifs-PC
+Working directory: /home/seif/dev/bioinformatics_intern/task1/Phase 1
+Start time: Wed Jul 15 21:29:28 2026
+
+Random number seed: 1784140168
+15836 MB RAM detected; reserving 7918 MB for main workspace.
+67735 variants loaded from .bim file.
+156 people (49 males, 107 females) loaded from .fam.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 156 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Warning: 1388 het. haploid genotypes present (see outputs/miss.hh ); many
+commands treat these as missing.
+Total genotyping rate is 0.998816.
+--missing: Sample missing data report written to outputs/miss.imiss, and
+variant-based missing data report written to outputs/miss.lmiss.
+
+End time: Wed Jul 15 21:29:28 2026
