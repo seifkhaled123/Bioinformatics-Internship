@@ -1,0 +1,30 @@
+PLINK v1.90b7.2 64-bit (11 Dec 2023)
+Options in effect:
+  --allow-no-sex
+  --bfile ../data/dataQC
+  --logistic
+  --out outputs/GWAS_Sex
+  --pheno ../Phase 4/outputs/covariates.txt
+  --pheno-name Sex
+
+Hostname: Seifs-PC
+Working directory: /home/seif/dev/bioinformatics_intern/task1/Phase 5
+Start time: Thu Jul 16 10:59:19 2026
+
+Random number seed: 1784188759
+15836 MB RAM detected; reserving 7918 MB for main workspace.
+67735 variants loaded from .bim file.
+156 people (49 males, 107 females) loaded from .fam.
+156 phenotype values present after --pheno.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 156 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Warning: 1388 het. haploid genotypes present (see outputs/GWAS_Sex.hh ); many
+commands treat these as missing.
+Total genotyping rate is 0.998816.
+67735 variants and 156 people pass filters and QC.
+Among remaining phenotypes, 107 are cases and 49 are controls.
+Writing logistic model association results to outputs/GWAS_Sex.assoc.logistic
+... done.
+
+End time: Thu Jul 16 10:59:20 2026
