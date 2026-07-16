@@ -1,0 +1,27 @@
+PLINK v1.90b7.2 64-bit (11 Dec 2023)
+Options in effect:
+  --bfile ../data/dataQC
+  --out outputs/PCA
+  --pca 10
+
+Hostname: Seifs-PC
+Working directory: /home/seif/dev/bioinformatics_intern/task1/Phase 2
+Start time: Thu Jul 16 09:06:51 2026
+
+Random number seed: 1784182011
+15836 MB RAM detected; reserving 7918 MB for main workspace.
+67735 variants loaded from .bim file.
+156 people (49 males, 107 females) loaded from .fam.
+Using up to 8 threads (change this with --threads).
+Before main variant filters, 156 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Warning: 1388 het. haploid genotypes present (see outputs/PCA.hh ); many
+commands treat these as missing.
+Total genotyping rate is 0.998816.
+67735 variants and 156 people pass filters and QC.
+Note: No phenotypes present.
+Excluding 1657 variants on non-autosomes from relationship matrix calc.
+Relationship matrix calculation complete.
+--pca: Results saved to outputs/PCA.eigenval and outputs/PCA.eigenvec .
+
+End time: Thu Jul 16 09:06:53 2026
