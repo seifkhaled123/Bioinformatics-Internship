@@ -1,0 +1,30 @@
+PLINK v1.90b7.2 64-bit (11 Dec 2023)
+Options in effect:
+  --allow-no-sex
+  --bfile ../data/dataQC
+  --linear
+  --mpheno 1
+  --out outputs/GWAS_PC1
+  --pheno ../Phase 2/outputs/PCA.eigenvec
+
+Hostname: Seifs-PC
+Working directory: /home/seif/dev/bioinformatics_intern/task1/Phase 4
+Start time: Thu Jul 16 10:10:44 2026
+
+Random number seed: 1784185844
+15836 MB RAM detected; reserving 7918 MB for main workspace.
+67735 variants loaded from .bim file.
+156 people (49 males, 107 females) loaded from .fam.
+156 phenotype values present after --pheno.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 156 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Warning: 1388 het. haploid genotypes present (see outputs/GWAS_PC1.hh ); many
+commands treat these as missing.
+Total genotyping rate is 0.998816.
+67735 variants and 156 people pass filters and QC.
+Phenotype data is quantitative.
+Writing linear model association results to outputs/GWAS_PC1.assoc.linear ...
+done.
+
+End time: Thu Jul 16 10:10:46 2026
