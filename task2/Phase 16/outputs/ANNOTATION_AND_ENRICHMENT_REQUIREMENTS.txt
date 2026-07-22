@@ -1,0 +1,3 @@
+The supplied mapping.xlsx maps participant IDs only; it is not a metabolite identifier cross-reference.
+Fill this template from a versioned HMDB/KEGG/ChEBI source before enrichment.
+Use the QC-passed 136 metabolites as the enrichment background and the carried-forward set as foreground; retain database version and query date.

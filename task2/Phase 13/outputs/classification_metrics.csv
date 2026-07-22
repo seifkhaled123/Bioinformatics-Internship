@@ -1,0 +1,3 @@
+"Model","Accuracy","Sensitivity","Specificity","Balanced_accuracy","AUC"
+"Elastic-net logistic regression",0.966666666666667,1,0.909090909090909,0.954545454545455,1
+"Random forest",0.966666666666667,1,0.909090909090909,0.954545454545455,1

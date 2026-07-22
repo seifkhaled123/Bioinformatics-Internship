@@ -1,1 +1,27 @@
+# Supplied task briefs are local reference material.
 files/
+
+# Reproducible tool binaries and temporary analysis state.
+tools/
+*.log
+*.hh
+*.gds
+*.ld
+*.rel
+*.rel.id
+*.csv.gz
+
+# PLINK intermediate datasets and association dumps; retain curated summaries/figures.
+task1/Results/
+task1/Phase 1/outputs/*.bed
+task1/Phase 1/outputs/*.bim
+task1/Phase 1/outputs/*.fam
+task1/Phase 1/outputs/*.frq
+task1/Phase 1/outputs/*.imiss
+task1/Phase 1/outputs/*.lmiss
+task1/Phase 2/outputs/*.prune.*
+task1/Phase 4/outputs/*.assoc.linear
+task1/Phase 4/outputs/*.pheno
+task1/Phase 4/outputs/*.covar
+task1/Phase 5/outputs/*.assoc.logistic
+task1/Phase 5/outputs/*.pheno

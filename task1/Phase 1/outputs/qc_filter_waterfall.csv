@@ -1,0 +1,5 @@
+"Strategy","Samples","SNPs"
+"Before_QC",156,67735
+"Standard",156,67735
+"Strict_missingness",156,55226
+"Strict_MAF",156,31694

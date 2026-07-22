@@ -1,3 +1,8 @@
+# Current analysis status
+
+> The original narrative below is retained as historical context and is not the current source of truth. Run the reproducible scripts in [`../RUNBOOK.md`](../RUNBOOK.md). In particular, Phase 7 hard-coded enrichment claims are superseded: enrichment is now run only from confirmed-build annotations of observed loci.
+
+
 # Genome-Wide Association Study of Qatari Population Structure
 ### Identifying Ancestry Informative Markers via a Full GWAS Pipeline — From Raw Genotype Data to Pathway Enrichment
 

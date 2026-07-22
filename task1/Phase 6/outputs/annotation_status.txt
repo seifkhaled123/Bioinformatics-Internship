@@ -1,0 +1,3 @@
+Genome build must be confirmed before annotation (GRCh37 vs GRCh38).
+This file deliberately contains no hard-coded annotations.
+Use the optional annotation script only after confirming the build.

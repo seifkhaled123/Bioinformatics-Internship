@@ -1,0 +1,6 @@
+script_file <- gsub("~\\+~", " ", sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE)[1]))
+phase_dir <- dirname(normalizePath(script_file))
+setwd(dirname(phase_dir))
+Sys.setenv(BIOINF_PHASE = "15")
+source("future_phases.R")
+quit(save = "no")

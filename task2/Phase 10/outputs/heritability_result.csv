@@ -1,0 +1,2 @@
+"Trait","N","Genetic_variance","Residual_variance","Heritability","Heritability_SE_delta_method","Boundary_estimate","Model_converged","Note"
+"Glucose",156,0,0.862957201422274,0,NA,TRUE,TRUE,"Genetic variance reached the non-negative boundary; h2 is estimated as 0 and a delta-method SE is not available."
