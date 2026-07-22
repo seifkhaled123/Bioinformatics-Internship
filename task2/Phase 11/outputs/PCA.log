@@ -1,0 +1,15 @@
+PLINK v1.90b7.2 64-bit (11 Dec 2023)
+Options in effect:
+  --bfile outputs/Qatari_metabolomics_Cleaned_Scaled.csv
+  --out outputs/PCA
+  --pca 10
+
+Hostname: Seifs-PC
+Working directory: /home/seif/dev/bioinformatics_intern/task2/Phase 11
+Start time: Tue Jul 21 13:48:05 2026
+
+Random number seed: 1784630885
+15832 MB RAM detected; reserving 7916 MB for main workspace.
+Error: Failed to open outputs/Qatari_metabolomics_Cleaned_Scaled.csv.bed.
+
+End time: Tue Jul 21 13:48:05 2026
