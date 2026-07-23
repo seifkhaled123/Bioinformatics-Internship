@@ -1,1 +1,4 @@
-No enrichment run: first create annotated_lead_genes.csv from confirmed-build Phase 6 annotations. No hard-coded gene set is used.
+Completed GO Biological Process over-representation analysis for 2 PC axis/axes.
+0 terms pass BH-adjusted p < 0.05.
+Gene lists come only from Phase 6 Ensembl annotations; no hard-coded pathway genes are used.
+Interpretation is exploratory: PC association is circular/descriptive and per-axis gene lists are small.

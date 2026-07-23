@@ -1,6 +1,6 @@
 # Current analysis status
 
-> The original narrative below is retained as historical context and is not the current source of truth. Run the reproducible scripts in [`../RUNBOOK.md`](../RUNBOOK.md). In particular, Phase 7 hard-coded enrichment claims are superseded: enrichment is now run only from confirmed-build annotations of observed loci.
+> This report reflects the reproducible scripts in [`../RUNBOOK.md`](../RUNBOOK.md). PC association is descriptive, Phase 6 uses the confirmed NCBI36/hg18 source build, and Phase 7 reports corrected enrichment results without hard-coded gene or pathway claims.
 
 
 # Genome-Wide Association Study of Qatari Population Structure
@@ -14,7 +14,7 @@ This project implements a complete, seven-phase **Genome-Wide Association Study 
 
 The pipeline identifies **Ancestry Informative Markers (AIMs)**: SNPs that exhibit dramatically different allele frequencies between ancestral sub-populations, making them powerful molecular fingerprints of geographic origin. The analysis spans raw data quality control, dimensionality reduction, unsupervised machine learning for population stratification, linear and logistic regression-based association testing, gene annotation via the **Ensembl** database, and terminal pathway enrichment using **Gene Ontology (GO)** and **KEGG** databases.
 
-The key biological finding is that the most statistically significant AIMs are concentrated in genes controlling **melanin biosynthesis and pigment metabolic processes** — a direct, empirical reflection of evolutionary adaptation to geographic UV radiation levels across the three major ancestral lineages of the Qatari population: **Bedouin (Arab), Persian (South Asian), and African admixture**.
+The confirmed downstream result is more cautious: 45 lead loci were mapped to genes, but no GO Biological Process term passed BH correction. The PC associations are descriptive because the PCs were derived from the same genotype matrix.
 
 ---
 
@@ -30,7 +30,7 @@ The key biological finding is that the most statistically significant AIMs are c
 | **Dimensionality Reduction** | `factoextra` | Elbow Method / WCSS visualization |
 | **Gaussian Mixture Modeling** | `mclust` | Model-based population clustering (BIC-optimized) |
 | **Interactive 3D Plotting** | `plotly`, `htmlwidgets` | 3D PCA cluster visualization (HTML widget) |
-| **Gene Annotation** | `biomaRt` | rsID-to-gene mapping via Ensembl REST API |
+| **Gene Annotation** | Ensembl VEP REST API | Current consequence and gene mapping from stable rsIDs |
 | **Label Repulsion** | `ggrepel` | Non-overlapping SNP/gene labels on Manhattan plots |
 | **Pathway Enrichment** | `clusterProfiler` | GO Biological Process & KEGG pathway over-representation |
 | **Gene ID Database** | `org.Hs.eg.db` | SYMBOL to ENTREZID conversion |
@@ -146,7 +146,7 @@ The variance explained by each PC was computed as:
 
 | PC1 vs. PC2 Scatter | Scree Plot |
 | :---: | :---: |
-| ![PCA Scatter](Phase%202/outputs/PCA_PC1_PC2.jpg) | ![Scree Plot](Phase%202/outputs/ScreePlot.jpg) |
+| ![PCA Scatter](Phase%202/outputs/pca_pc1_pc2.png) | ![Scree Plot](Phase%202/outputs/pca_scree_plot.png) |
 
 ---
 
@@ -268,123 +268,39 @@ This validates that the Phase 1 QC pipeline correctly handled sex-chromosome bio
 | **Bonferroni Threshold** | 7.39e-07 | 7.39e-07 |
 | **Conclusion** | Strong, real ancestral signal found | No autosomal signal — pipeline validated |
 
-### Manhattan & QQ Plots
+## Phase 6: Gene and Functional Annotation
 
-| PC1 Ancestry GWAS | Biological Sex GWAS |
-| :---: | :---: |
-| ![Manhattan PC1](Phase%206/outputs/Manhattan_PC1.jpg) | ![Manhattan Sex](Phase%206/outputs/Manhattan_Sex.jpg) |
+The source PLINK positions were confirmed as NCBI36/hg18. Phase 6 selects the strongest
+Bonferroni-significant locus per chromosome for PC1 and PC2, uses each stable rsID to
+obtain current GRCh38 consequence annotation from Ensembl VEP, and retains both source
+and remapped coordinates. Where VEP has no named consequence gene, the nearest
+protein-coding gene within 1 Mb is recorded with its distance and mapping type.
 
----
+All 45 loci received named mappings: 27 direct VEP consequence genes and 18 nearest
 
-## Phase 6: Gene Annotation of Significant SNPs
-
-### Objective
-Map the top statistically significant SNPs from the PC1 linear GWAS to their nearest genes and functional consequences. This transforms a list of genomic coordinates into a biologically interpretable gene list.
-
-### Methodology
-
-**Step 1 — Threshold the Significant SNPs:**
-
-SNPs were filtered at P < 1e-5 to retrieve a list of rsIDs for annotation.
-
-**Step 2 — The -log10(P) Transformation:**
-
-For visualization, raw p-values are transformed as `y = -log10(P)`. This compresses the enormous range of p-values into a readable scale:
-- `P = 0.05  →  y = 1.30`
-- `P = 1e-7  →  y = 7.0`  (genome-wide significance line)
-- `P = 9.5e-28 → y ≈ 27.0` (the lead AIM "skyscraper")
-
-**Step 3 — Ensembl biomaRt Annotation:**
-
-Top rsIDs were queried against the Ensembl SNP database:
-
-```r
-ensembl <- useEnsembl(biomart = "snps", dataset = "hsapiens_snp")
-annotation_data <- getBM(
-  attributes = c('refsnp_id', 'chr_name', 'chrom_start',
-                 'associated_gene', 'consequence_type_tv'),
-  filters    = 'snp_filter',
-  values     = top_snps,
-  mart       = ensembl
-)
-```
-
-### Annotated Top Hits Table (PC1 Ancestry Markers)
-
-| SNP (rsID) | Chr | Position (bp) | Nearest Gene | Consequence | Biological Context |
-| :--- | :---: | :---: | :---: | :--- | :--- |
-| **rs10466604** | 11 | 124,159,136 | *ROBO3* | Intronic Variant | Roundabout Guidance Receptor 3 — axon guidance / neural migration |
-| **rs335339** | 4 | 62,013,467 | *PDGFRA* | Intronic / Regulatory | Platelet-Derived Growth Factor Receptor alpha — development & signaling |
-| **rs7355960** | 3 | 180,566,740 | *SOX2* | Downstream Variant | SRY-box Transcription Factor 2 — stem cell maintenance |
-| **rs16857866** | 2 | 11,828,169 | *TGOLN2* | Intronic Variant | Trans-Golgi Network Protein 2 — vesicular transport |
-| **rs1841575** | 15 | 51,886,958 | *GABRG3* | Intronic Variant | GABA Receptor Gamma-3 subunit — neurological function |
-
-> **Biological Plausibility:** The top AIMs are predominantly located in **intronic (non-coding) regulatory regions**. This is expected: ancestral divergence is primarily driven by deep regulatory mutations (affecting gene expression timing and level) rather than protein-coding changes, which are more likely to be deleterious and therefore selected against.
-
-### Annotated Manhattan Plot (PC1)
-
-![Annotated Manhattan PC1](Phase%206/outputs/PC1_Gene_Manhattan.jpg)
-
----
+Final Manhattan plots: [PC1 linear](Phase%206/outputs/PC1_gene_labeled_manhattan.png),
+[PC2 linear](Phase%206/outputs/PC2_gene_labeled_manhattan.png), and
+[sex logistic](Phase%206/outputs/Sex_gene_labeled_manhattan.png). The sex plot has no gene
+labels because the logistic scan has no Bonferroni-significant loci.
+protein-coding genes. See [the full annotation table](Phase%206/outputs/annotated_lead_genes.csv)
+and [annotation summary](Phase%206/outputs/annotation_summary.csv).
 
 ## Phase 7: Pathway Enrichment Analysis
 
-### Objective
-Determine whether the annotated gene list is statistically **enriched** for known biological pathways. This converts a set of gene names into a functional biological narrative, answering: *"What do these ancestry-informative genes collectively do?"*
+GO Biological Process enrichment was run separately for the observed PC1 and PC2 gene
+lists. All 23 PC1 and 22 PC2 symbols mapped to Entrez IDs. The analysis tested 363 terms
+for PC1 and 389 for PC2; **none passed BH-adjusted p < 0.05** (minimum adjusted p-value
+approximately 0.128). Therefore, this analysis does not support a melanin or other pathway
+enrichment claim.
 
-### Methodology
+The exact requested significant-pathway table is
+[`enriched_pathways.csv`](Phase%207/outputs/enriched_pathways.csv); it is header-only
+because no pathway passes correction. The standalone interpretation is
+[`pathway_interpretation.txt`](Phase%207/outputs/pathway_interpretation.txt).
 
-**Step 1 — Gene ID Translation:**
-
-Gene symbols were mapped to **Entrez IDs** required by the pathway databases:
-
-```r
-gene_ids <- bitr(gene_symbols, fromType = "SYMBOL",
-                 toType   = "ENTREZID",
-                 OrgDb    = org.Hs.eg.db)
-```
-
-**Step 2 — Gene Ontology (GO) Over-Representation Analysis:**
-
-The `clusterProfiler::enrichGO()` function tests whether the input gene set contains more genes from a given GO Biological Process (BP) term than expected by chance, using a **hypergeometric test**. Multiple testing is corrected using the **Benjamini-Hochberg (BH)** procedure:
-
-```r
-ego <- enrichGO(gene          = gene_ids$ENTREZID,
-                OrgDb         = org.Hs.eg.db,
-                ont           = "BP",
-                pAdjustMethod = "BH",
-                pvalueCutoff  = 0.05,
-                readable      = TRUE)
-```
-
-### Top Enriched Pathways
-
-| GO Term | Pathway Description | Gene Count | Adjusted P-Value |
-| :--- | :--- | :---: | :---: |
-| GO:0006582 | **Melanin metabolic process** | 4 | 2.18e-07 |
-| GO:0042438 | **Melanin biosynthetic process** | 4 | 2.18e-07 |
-| GO:0042440 | **Pigment metabolic process** | 5 | 2.18e-07 |
-| GO:0044550 | Secondary metabolite biosynthetic process | 4 | 2.18e-07 |
-| GO:0046189 | Phenol-containing compound biosynthetic process | 4 | 1.43e-06 |
-
-### Key Findings — Evolutionary Biology Validated
-
-The pathway enrichment analysis returned a highly significant overrepresentation of genes in **melanin biosynthesis and pigment metabolic processes** (P-adj = 2.18e-07). The implicated genes include well-established pigmentation markers:
-
-- **SLC24A5** — Cation exchanger; the rs1426654 variant explains ~30% of skin pigmentation variance between European and African populations.
-- **TYR** — Tyrosinase, the rate-limiting enzyme in melanin synthesis.
-- **OCA2 / HERC2** — The HERC2-OCA2 locus; the major determinant of blue vs. brown eye color.
-- **MC1R** — Melanocortin-1 Receptor; regulates eumelanin (brown/black) vs. phaeomelanin (red/yellow) pigment ratio.
-- **ASIP** — Agouti Signaling Protein; an MC1R antagonist controlling pigment distribution.
-- **KITLG** — KIT Ligand; regulates melanocyte survival and migration.
-
-> **Why does this make biological sense?**
->
-> Human skin, hair, and eye color are among the most visible evolutionary adaptations to geography. Populations near the equator (high UV radiation) evolved higher melanin production for photoprotection; those at high latitudes evolved reduced pigmentation for Vitamin D synthesis efficiency. Consequently, the genomic loci controlling melanin production harbor some of the most powerful **Ancestry Informative Markers** that differentiate global sub-populations. The pipeline independently recovered this known evolutionary biology from raw genotype data, constituting a strong end-to-end validation of the entire analysis.
-
-### Pathway Enrichment Dot Plot
-
-![Pathway Enrichment Dotplot](Phase%207/outputs/Pathway_Enrichment_Dotplot.jpg)
+See the [enrichment summary](Phase%207/outputs/enrichment_summary.csv),
+[all tested GO terms](Phase%207/outputs/go_enrichment_all.csv), and
+[dot plot](Phase%207/outputs/go_enrichment_dotplot.png).
 
 ---
 
@@ -396,12 +312,12 @@ The pathway enrichment analysis returned a highly significant overrepresentation
 | Input SNPs | 67,735 |
 | Post-QC SNPs retained | 67,735 (100% — data was pre-filtered to publication quality) |
 | Principal Components computed | 10 |
-| Ancestral clusters identified | **3** (Bedouin, Persian, African admixture) |
-| Lead AIM p-value (PC1 linear GWAS) | **~9.5e-28** (rs10466604, Chr 11) |
+| Unsupervised clusters selected | 3; ancestry labels require external reference validation |
+| Strongest PC1 descriptive association | rs7355960, p = 3.833e-28 |
 | Bonferroni Significance Threshold | 7.39e-07 |
 | Sex GWAS autosomal signal | None (pipeline validated) |
-| Top annotated genes | *ROBO3, PDGFRA, SOX2, TGOLN2, GABRG3* |
-| Top enriched pathway (adj. P) | Melanin metabolic process (2.18e-07) |
+| Phase 6 annotation | 45 loci mapped (27 direct consequence genes; 18 nearest genes) |
+| Phase 7 enrichment | No GO BP term passed BH-adjusted p < 0.05 |
 
 ---
 

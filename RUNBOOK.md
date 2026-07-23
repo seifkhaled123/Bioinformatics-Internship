@@ -15,7 +15,7 @@ Rscript professional_pipeline.R 6  # lead-locus annotation input
 Rscript professional_pipeline.R 7  # enrichment only from observed annotations
 ```
 
-PC association is explicitly descriptive: PCs are constructed from the same genotypes. Do not present its lead SNPs as independent trait discoveries. Phase 6 deliberately requires a confirmed genome build before annotation; Phase 7 never uses a hard-coded gene list.
+PC association is explicitly descriptive: PCs are constructed from the same genotypes. Do not present its lead SNPs as independent trait discoveries. The supplied coordinates were confirmed as NCBI36/hg18; Phase 6 remaps stable rsIDs through Ensembl VEP and Phase 7 uses only the resulting observed genes.
 
 ## Task 2
 

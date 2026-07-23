@@ -1,0 +1,2 @@
+UCSC_name	NCBI_assembly	Evidence
+hg18	NCBI36	Eight sampled lead loci matched rsID and position exactly in the UCSC hg18 dbSNP130 track (chromosomes 1, 2, 3, 4, 10, 11, and X); rs7355960 is chr3:180566740 in hg18, versus chr3:179084046 on GRCh37 and chr3:179366258 on GRCh38.

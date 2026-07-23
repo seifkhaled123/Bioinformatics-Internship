@@ -1,3 +1,6 @@
-Genome build must be confirmed before annotation (GRCh37 vs GRCh38).
-This file deliberately contains no hard-coded annotations.
-Use the optional annotation script only after confirming the build.
+Completed: 45 lead loci annotated through Ensembl VEP.
+Source coordinates: hg18 (NCBI36), documented in data/genome_build.tsv.
+Annotation coordinates/consequences: GRCh38.
+The rsID is used to remap old source coordinates to the current assembly; source and annotation coordinates are both retained.
+Final PC1/PC2 linear and sex-logistic Manhattan plots are written here; the null sex scan has no valid gene labels.
+PC1/PC2 associations are descriptive because the PCs were calculated from the same genotypes.

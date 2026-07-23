@@ -60,13 +60,8 @@ phase5 <- function() {
   d <- read_assoc(file.path(out, "GWAS_Sex.assoc.logistic")); write.csv(head(d[order(d$P), ], 50), file.path(out, "sex_top_hits.csv"), row.names = FALSE); write.csv(write_gwas_figures(d, out, "Sex"), file.path(out, "sex_gwas_summary.csv"), row.names = FALSE); write.csv(as.data.frame(table(Sex_code = fam$Sex)), file.path(out, "sex_coding_check.csv"), row.names = FALSE)
 }
 
-phase6 <- function() {
-  out <- out_dir(6); gwas <- bind_rows(lapply(c("PC1", "PC2"), function(pc) mutate(read_assoc(file.path(out_dir(4), paste0("GWAS_", pc, ".assoc.linear"))), Analysis = pc))); threshold <- .05 / nrow(filter(gwas, Analysis == "PC1")); leads <- gwas |> filter(P < threshold) |> group_by(Analysis, CHR) |> slice_min(P, n = 1, with_ties = FALSE) |> ungroup() |> select(Analysis, SNP, CHR, BP, P, BETA); write.csv(leads, file.path(out, "annotation_input_lead_loci.csv"), row.names = FALSE); writeLines(c("Genome build must be confirmed before annotation (GRCh37 vs GRCh38).", "This file deliberately contains no hard-coded annotations.", "Use the optional annotation script only after confirming the build."), file.path(out, "annotation_status.txt"))
-}
 
-phase7 <- function() {
-  out <- out_dir(7); input <- file.path(out_dir(6), "annotated_lead_genes.csv"); if (!file.exists(input)) { writeLines("No enrichment run: first create annotated_lead_genes.csv from confirmed-build Phase 6 annotations. No hard-coded gene set is used.", file.path(out, "enrichment_status.txt")); return(invisible()) }; require_pkgs(c("clusterProfiler", "org.Hs.eg.db")); genes <- read.csv(input)$Gene; ids <- clusterProfiler::bitr(unique(genes), "SYMBOL", "ENTREZID", org.Hs.eg.db); ego <- clusterProfiler::enrichGO(ids$ENTREZID, OrgDb = org.Hs.eg.db, ont = "BP", pAdjustMethod = "BH", readable = TRUE); write.csv(as.data.frame(ego), file.path(out, "go_enrichment.csv"), row.names = FALSE); save_fig(clusterProfiler::dotplot(ego, showCategory = 15) + ggtitle("GO enrichment of observed GWAS lead-locus genes"), file.path(out, "go_enrichment_dotplot.png"), 9, 7)
-}
+source(file.path(task1_dir, "phase6_7_pipeline.R"))
 
 phase <- Sys.getenv("BIOINF_PHASE", unset = commandArgs(trailingOnly = TRUE)[1])
 switch(phase, `1` = phase1(), `2` = phase2(), `3` = phase3(), `4` = phase4(), `5` = phase5(), `6` = phase6(), `7` = phase7(), stop("Usage: Rscript professional_pipeline.R {1|2|3|4|5|6|7}"))

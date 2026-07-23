@@ -1,137 +1,137 @@
-"Metabolite","Degree","Betweenness","Component"
-"Aspartate",6,0.0142386736167831,1
-"Guanidinoacetate",5,0.021030953568267,1
-"Glutamine",4,0.00894791841260478,1
-"Glutamate",6,0.0219695265695656,1
-"Pyroglutamine",3,0.0095162379071266,1
-"Cysteine_glutathione_disulfide",6,0.0206059553106183,1
-"Cys_gly_oxidized",1,0,1
-"Pipecolate",4,0.00956668492738144,1
-"S_adenosylhomocysteine",7,0.0251156110216732,1
-"N_acetyltaurine",6,0.0249184451299409,1
-"Hydroxybutyrate_hydroxyisobutyrate_2",5,0.0138460765259741,1
-"Taurine",7,0.0155292838720967,1
-"N_acetylmethionine",5,0.0151179576952672,1
-"Bromotryptophan_5",3,0.00502457694419878,1
-"Citrulline",5,0.0156400374311352,1
-"Erythronate",4,0.00972002834308951,1
-"Mannose",4,0.00903230435837011,1
-"Fructose",4,0.0106521652112326,1
-"Anhydroglucitol_1_5",4,0.00632540595178387,1
-"Glucose",5,0.0150697404677504,1
-"Ribonate",4,0.00904083621281944,1
-"Arabonate_xylonate",3,0.00612015280340322,1
-"Oxalate",2,0.00103661586248651,1
-"Malate",2,0.00226207262642732,1
-"Palmitoyl_linoleoyl_glycerol",3,0.0100119549083065,1
-"Palmitoylcholine",5,0.0276497574331932,1
-"Hydroxydecanoate_3",5,0.0120407672907111,1
-"Hydroxyoctanoate_3",5,0.0153697444990977,1
-"Hydroxymyristate_3",4,0.00761349136922252,1
-"Hydroxylaurate_3",3,0.00709588058014299,1
-"Hydroxybutyrate_3",7,0.0423120882863835,1
-"Linoleoyl_GPC",3,0.00588960501700722,1
-"Stearoyl_GPC",7,0.0342711351486105,1
-"Stearoyl_GPI",5,0.022569608120583,1
-"Enyl_palmitoyl_GPC",4,0.0116538904827852,1
-"Enyl_oleoyl_GPE",7,0.0242135251868449,1
-"Enyl_palmitoyl_GPE",8,0.0374544380241385,1
-"Arachidonoylcholine",2,0.00405502549781157,1
-"Oleoylcholine",4,0.00414993059271666,1
-"Dihomo_linolenoyl_choline",3,0.0114407372616328,1
-"Distearoyl_GPC",4,0.0205625854543033,1
-"Docosahexaenoylcholine",5,0.0212968695267135,1
-"Palmitoyl_arachidonoyl_GPE",4,0.0119531706835385,1
-"Palmitoyl_oleoyl_GPE",6,0.0205583094162257,1
-"GPC",4,0.00868259282023793,1
-"Enyl_palmitoyl_palmitoleoyl_GPC",4,0.00787093053316285,1
-"Enyl_palmitoyl_oleoyl_GPC",11,0.0696420901590493,1
-"Enyl_palmitoyl_linoleoyl_GPC",5,0.0122906806644979,1
-"Enyl_palmitoyl_palmitoyl_GPC",3,0.00384601609311394,1
-"Sphingomyelin_d18_2_14_0",3,0.00975078833702383,1
-"Sphingomyelin_d18_2_24_1",4,0.00928138047082965,1
-"Lactosyl_N_palmitoyl_sphingosine",7,0.0272565385293412,1
-"Sphingosine",4,0.00639281239612915,1
-"Sphingomyelin_d18_1_24_1",9,0.0494199995347285,1
-"Sphingomyelin_d18_1_20_1",2,0.00205840287100652,1
-"Sphingomyelin_d18_2_23_0",7,0.0286791782123945,1
-"Sphingomyelin_d18_2_16_0",8,0.0285130060080436,1
-"Sphingomyelin_d18_1_22_1",1,0,1
-"Palmitoyl_sphingomyelin",2,0.00238388865205761,1
-"Palmitoyl_dihydrosphingomyelin",5,0.0164833683910932,1
-"Inosine",7,0.025509982552954,1
-"Methylguanine_7",4,0.00941730586838381,1
-"Dihydroorotate",8,0.0305751539846517,1
-"Aminoisobutyrate_3",3,0.00945712478050786,1
-"Deoxyuridine_2",6,0.0317527802945981,1
-"Leucylalanine",2,0.00150540622299475,1
-"Fibrinogen_cleavage_peptide",1,0,1
-"Gluconate",5,0.0177141984604671,1
-"Valine",7,0.0366335678758857,1
-"Leucine",5,0.0142211809749123,1
-"Isoleucine",8,0.0457928067878317,1
-"Alanine",1,0,1
-"Serine",5,0.012391490533623,1
-"Glycine",6,0.0251250168663104,1
-"Threonine",8,0.0425973300851892,1
-"Phenylalanine",5,0.019643903122885,1
-"Tyrosine",3,0.00855003210261234,1
-"Tryptophan",6,0.0320642456544362,1
-"Histidine",3,0.00903074414683038,1
-"Lysine",2,0.00106261145647547,1
-"Arginine",6,0.0292853243433675,1
-"Proline",2,0.00382259899672835,1
-"Ornithine",8,0.0303845844468923,1
-"Homocysteine",1,0,1
-"Cystine",6,0.0305923187801096,1
-"Asparagine",6,0.0173146287588781,1
-"Lactate",8,0.02269015911124,1
-"Pyruvate",3,0.0116878586903993,1
-"Xylitol",1,0,1
-"Sorbitol",6,0.0157876094755424,1
-"Maltose",7,0.0266924445682616,1
-"Cholesterol",5,0.0290664837426129,1
-"Choline",6,0.0194732581104642,1
-"Palmitate",5,0.0122180938179377,1
-"Stearate",5,0.0160272143212832,1
-"Oleate",9,0.0456197108833119,1
-"Linoleate",6,0.0276196204681231,1
-"Arachidonate",3,0.00598335012050747,1
-"Docosahexaenoate",3,0.00660174315183583,1
-"Eicosapentaenoate",5,0.0134470968157926,1
-"Myristate",8,0.0239233010049855,1
-"Palmitoleate",3,0.00307205155878456,1
-"Carnitine",3,0.00823893454964443,1
-"Acetylcarnitine",5,0.0148501061131536,1
-"Propionylcarnitine",3,0.00402732210360735,1
-"Cholate",7,0.0231278182871241,1
-"Deoxycholate",7,0.0245812002140653,1
-"Glycocholate",6,0.0182519562619065,1
-"Taurocholate",2,0.00302170803829179,1
-"Adenosine",5,0.015514983540542,1
-"Guanosine",4,0.0139418360645558,1
-"Uridine",9,0.0530666223420589,1
-"Cytidine",6,0.0257484523302492,1
-"Hypoxanthine",4,0.0167970469502027,1
-"Xanthosine",0,0,2
-"Uric_acid",4,0.00808741434417402,1
-"Allantoin",7,0.042415170051986,1
-"Nicotinamide",7,0.0374713839408058,1
-"Pantothenate",6,0.0124927403534369,1
-"Riboflavin",3,0.00407087660819004,1
-"Pyridoxal",2,0.0028220011055832,1
-"Thiamine",3,0.00188738569335584,1
-"Ascorbate",2,0.000482511667761887,1
-"Alpha_tocopherol",7,0.0221725086653641,1
-"Gamma_glutamylalanine",7,0.0324488290408688,1
-"Gamma_glutamylglutamate",6,0.0193170878157709,1
-"Cysteinylglycine",4,0.0122998536670374,1
-"Caffeine",3,0.00618598830724477,1
-"Paraxanthine",8,0.0411247586099032,1
-"Theobromine",7,0.0279948391481413,1
-"Hippurate",6,0.0246150412885366,1
-"Salicylate",6,0.0204032636324608,1
-"Citrate",6,0.0151846257360354,1
-"Succinate",5,0.014469945814417,1
-"Fumarate",7,0.0278414337769523,1
-"Alpha_ketoglutarate",4,0.0130504512667228,1
+"Metabolite","Display_name","Degree","Strength","Betweenness","Component","Community","Isolate","Hub_label"
+"Aspartate","Aspartate",6,1.4313555575203,0.0141514648977336,1,3,FALSE,""
+"Guanidinoacetate","Guanidinoacetate",5,1.17171184097797,0.0236594803758983,1,4,FALSE,""
+"Glutamine","Glutamine",4,0.841451229117551,0.00541735765616363,1,3,FALSE,""
+"Glutamate","Glutamate",6,1.37276146553843,0.0211166390270868,1,5,FALSE,""
+"Pyroglutamine","Pyroglutamine",3,0.712878319174264,0.0105030403537866,1,1,FALSE,""
+"Cysteine_glutathione_disulfide","Cysteine glutathione disulfide",6,1.42673933133816,0.0223327805417358,1,6,FALSE,""
+"Cys_gly_oxidized","Cys gly oxidized",1,0.213344557846588,0,1,1,FALSE,""
+"Pipecolate","Pipecolate",4,0.92952651419596,0.00862354892205638,1,5,FALSE,""
+"S_adenosylhomocysteine","S adenosylhomocysteine",7,1.62870736546399,0.021779988944168,1,3,FALSE,""
+"N_acetyltaurine","N acetyltaurine",6,1.40080096746672,0.0241017136539525,1,3,FALSE,""
+"Hydroxybutyrate_hydroxyisobutyrate_2","Hydroxybutyrate hydroxyisobutyrate 2",5,1.0671929734315,0.0110558319513543,1,3,FALSE,""
+"Taurine","Taurine",7,1.64062702461261,0.0199004975124378,1,9,FALSE,""
+"N_acetylmethionine","N acetylmethionine",5,1.17974518386841,0.0137092316196794,1,2,FALSE,""
+"Bromotryptophan_5","Bromotryptophan 5",3,0.673693752831856,0.00309563294637922,1,9,FALSE,""
+"Citrulline","Citrulline",5,1.2283706959577,0.0149253731343284,1,3,FALSE,""
+"Erythronate","Erythronate",4,0.928473725936719,0.00972913211719182,1,10,FALSE,""
+"Mannose","Mannose",4,0.903788652866549,0.00884466556108347,1,8,FALSE,""
+"Fructose","Fructose",4,0.860707895575629,0.00453289110005528,1,1,FALSE,""
+"Anhydroglucitol_1_5","Anhydroglucitol 1 5",4,0.915748714114978,0.0025428413488115,1,6,FALSE,""
+"Glucose","Glucose",5,1.21534359676907,0.0187949143173024,1,2,FALSE,""
+"Ribonate","Ribonate",4,0.959291094333568,0.0144831398562742,1,10,FALSE,""
+"Arabonate_xylonate","Arabonate xylonate",3,0.691901776097897,0.00552791597567717,1,2,FALSE,""
+"Oxalate","Oxalate",2,0.469330156356979,0.00110558319513543,1,4,FALSE,""
+"Malate","Malate",2,0.536493405946907,0.00497512437810945,1,6,FALSE,""
+"Palmitoyl_linoleoyl_glycerol","Palmitoyl linoleoyl glycerol",3,0.75563450326424,0.0145936981757877,1,1,FALSE,""
+"Palmitoylcholine","Palmitoylcholine",5,1.21412422979713,0.0320619126589276,1,1,FALSE,""
+"Hydroxydecanoate_3","Hydroxydecanoate 3",5,1.16900147010125,0.0108347153123273,1,9,FALSE,""
+"Hydroxyoctanoate_3","Hydroxyoctanoate 3",5,1.10675779905933,0.0118297401879491,1,9,FALSE,""
+"Hydroxymyristate_3","Hydroxymyristate 3",4,0.971862309803611,0.00807075732448867,1,9,FALSE,""
+"Hydroxylaurate_3","Hydroxylaurate 3",3,0.659199372800631,0.00574903261470426,1,7,FALSE,""
+"Hydroxybutyrate_3","Hydroxybutyrate 3",7,1.46649104746624,0.0306246545052515,1,1,FALSE,""
+"Linoleoyl_GPC","Linoleoyl GPC",3,0.797186569298735,0.00972913211719182,1,7,FALSE,""
+"Stearoyl_GPC","Stearoyl GPC",7,1.86737027288367,0.0520729684908789,1,4,FALSE,""
+"Stearoyl_GPI","Stearoyl GPI",5,1.14473164865172,0.0220011055831951,1,3,FALSE,""
+"Enyl_palmitoyl_GPC","Enyl palmitoyl GPC",4,0.910166461768898,0.0111663902708679,1,8,FALSE,""
+"Enyl_oleoyl_GPE","Enyl oleoyl GPE",7,1.49878142093056,0.0135986733001658,1,10,FALSE,""
+"Enyl_palmitoyl_GPE","Enyl palmitoyl GPE",8,1.87856314074971,0.0351575456053068,1,6,FALSE,"Enyl palmitoyl GPE"
+"Arachidonoylcholine","Arachidonoylcholine",2,0.477872096760729,0.00453289110005528,1,6,FALSE,""
+"Oleoylcholine","Oleoylcholine",4,0.818653437626996,0.00199004975124378,1,10,FALSE,""
+"Dihomo_linolenoyl_choline","Dihomo linolenoyl choline",3,0.69612601873884,0.0106135986733002,1,1,FALSE,""
+"Distearoyl_GPC","Distearoyl GPC",4,0.86540083447344,0.0186843559977888,1,1,FALSE,""
+"Docosahexaenoylcholine","Docosahexaenoylcholine",5,1.24922920468973,0.0291873963515755,1,8,FALSE,""
+"Palmitoyl_arachidonoyl_GPE","Palmitoyl arachidonoyl GPE",4,0.906582005316778,0.0102819237147595,1,6,FALSE,""
+"Palmitoyl_oleoyl_GPE","Palmitoyl oleoyl GPE",6,1.40087522263437,0.0224433388612493,1,2,FALSE,""
+"GPC","GPC",4,0.898966446603513,0.00884466556108347,1,10,FALSE,""
+"Enyl_palmitoyl_palmitoleoyl_GPC","Enyl palmitoyl palmitoleoyl GPC",4,0.931400683735867,0.00707573244886678,1,5,FALSE,""
+"Enyl_palmitoyl_oleoyl_GPC","Enyl palmitoyl oleoyl GPC",11,2.67031965008051,0.0861249309010503,1,5,FALSE,"Enyl palmitoyl oleoyl GPC"
+"Enyl_palmitoyl_linoleoyl_GPC","Enyl palmitoyl linoleoyl GPC",5,1.11854694591521,0.0102819237147595,1,2,FALSE,""
+"Enyl_palmitoyl_palmitoyl_GPC","Enyl palmitoyl palmitoyl GPC",3,0.658769584109367,0.00431177446102819,1,1,FALSE,""
+"Sphingomyelin_d18_2_14_0","Sphingomyelin d18 2 14 0",3,0.663854529773885,0.0106135986733002,1,5,FALSE,""
+"Sphingomyelin_d18_2_24_1","Sphingomyelin d18 2 24 1",4,1.08317691625295,0.0149253731343284,1,8,FALSE,""
+"Lactosyl_N_palmitoyl_sphingosine","Lactosyl N palmitoyl sphingosine",7,1.64711380552736,0.029297954671089,1,5,FALSE,""
+"Sphingosine","Sphingosine",4,0.908560584770558,0.00409065782200111,1,5,FALSE,""
+"Sphingomyelin_d18_1_24_1","Sphingomyelin d18 1 24 1",9,2.06869962223159,0.0576008844665561,1,5,FALSE,"Sphingomyelin d18 1 24 1"
+"Sphingomyelin_d18_1_20_1","Sphingomyelin d18 1 20 1",2,0.435339938052659,0.00176893311221669,1,2,FALSE,""
+"Sphingomyelin_d18_2_23_0","Sphingomyelin d18 2 23 0",7,1.60778710091925,0.0256495301271421,1,2,FALSE,""
+"Sphingomyelin_d18_2_16_0","Sphingomyelin d18 2 16 0",8,1.94683194432465,0.0334991708126036,1,3,FALSE,"Sphingomyelin d18 2 16 0"
+"Sphingomyelin_d18_1_22_1","Sphingomyelin d18 1 22 1",1,0.285676563149758,0,1,3,FALSE,""
+"Palmitoyl_sphingomyelin","Palmitoyl sphingomyelin",2,0.480043829423248,0.0025428413488115,1,4,FALSE,""
+"Palmitoyl_dihydrosphingomyelin","Palmitoyl dihydrosphingomyelin",5,1.1328828241319,0.0142620232172471,1,7,FALSE,""
+"Inosine","Inosine",7,1.60042441994987,0.0224433388612493,1,7,FALSE,""
+"Methylguanine_7","Methylguanine 7",4,1.03875395995811,0.0134881149806523,1,6,FALSE,""
+"Dihydroorotate","Dihydroorotate",8,1.94769731148549,0.0400221116639027,1,3,FALSE,"Dihydroorotate"
+"Aminoisobutyrate_3","Aminoisobutyrate 3",3,0.7321996764773,0.010171365395246,1,1,FALSE,""
+"Deoxyuridine_2","Deoxyuridine 2",6,1.29707649419252,0.026865671641791,1,6,FALSE,""
+"Leucylalanine","Leucylalanine",2,0.444334797406148,0.00121614151464898,1,2,FALSE,""
+"Fibrinogen_cleavage_peptide","Fibrinogen cleavage peptide",1,0.203335893853793,0,1,6,FALSE,""
+"Gluconate","Gluconate",5,1.16558120355639,0.0220011055831951,1,10,FALSE,""
+"Valine","Valine",7,1.57943497315637,0.031951354339414,1,6,FALSE,""
+"Leucine","Leucine",5,1.19887999422925,0.0144831398562742,1,4,FALSE,""
+"Isoleucine","Isoleucine",8,1.77436958670301,0.0440022111663903,1,5,FALSE,""
+"Alanine","Alanine",1,0.240012309877255,0,1,5,FALSE,""
+"Serine","Serine",5,1.11682611840007,0.010171365395246,1,10,FALSE,""
+"Glycine","Glycine",6,1.44939550141977,0.0311774461028192,1,1,FALSE,""
+"Threonine","Threonine",8,1.98746813915952,0.05616362631288,1,4,FALSE,"Threonine"
+"Phenylalanine","Phenylalanine",5,1.26473601833698,0.0255389718076285,1,7,FALSE,""
+"Tyrosine","Tyrosine",3,0.62923312273539,0.00674405749032615,1,8,FALSE,""
+"Tryptophan","Tryptophan",6,1.40281812119389,0.0333886124930901,1,2,FALSE,""
+"Histidine","Histidine",3,0.731251707961961,0.0119402985074627,1,5,FALSE,""
+"Lysine","Lysine",2,0.403874748290893,0.00033167495854063,1,8,FALSE,""
+"Arginine","Arginine",6,1.29389695008184,0.0210060807075732,1,6,FALSE,""
+"Proline","Proline",2,0.476124030007134,0.00375898286346048,1,6,FALSE,""
+"Ornithine","Ornithine",8,1.96284959794975,0.038253178551686,1,9,FALSE,"Ornithine"
+"Homocysteine","Homocysteine",1,0.311047734577553,0,1,4,FALSE,""
+"Cystine","Cystine",6,1.38281896471665,0.0352681039248203,1,6,FALSE,""
+"Asparagine","Asparagine",6,1.4206033052832,0.0192371475953566,1,5,FALSE,""
+"Lactate","Lactate",8,1.85729013873968,0.0236594803758983,1,5,FALSE,""
+"Pyruvate","Pyruvate",3,0.648074241031202,0.00784964068546158,1,2,FALSE,""
+"Xylitol","Xylitol",1,0.202535461989346,0,1,4,FALSE,""
+"Sorbitol","Sorbitol",6,1.41064299263229,0.0141514648977336,1,9,FALSE,""
+"Maltose","Maltose",7,1.56485939939876,0.0172470978441128,1,4,FALSE,""
+"Cholesterol","Cholesterol",5,1.06432841391269,0.0243228302929795,1,1,FALSE,""
+"Choline","Choline",6,1.32206866465523,0.0174682144831399,1,5,FALSE,""
+"Palmitate","Palmitate",5,1.05727071028059,0.00762852404643449,1,7,FALSE,""
+"Stearate","Stearate",5,1.13089089178461,0.0173576561636263,1,2,FALSE,""
+"Oleate","Oleate",9,2.10798649884972,0.0444444444444444,1,3,FALSE,"Oleate"
+"Linoleate","Linoleate",6,1.33847955337255,0.0231066887783306,1,4,FALSE,""
+"Arachidonate","Arachidonate",3,0.660635473335441,0.005085682697623,1,7,FALSE,""
+"Docosahexaenoate","Docosahexaenoate",3,0.705355769868649,0.00630182421227197,1,8,FALSE,""
+"Eicosapentaenoate","Eicosapentaenoate",5,1.10744119371187,0.0151464897733554,1,5,FALSE,""
+"Myristate","Myristate",8,1.76478737518577,0.0111663902708679,1,9,FALSE,""
+"Palmitoleate","Palmitoleate",3,0.714380118080518,0.00386954118297402,1,3,FALSE,""
+"Carnitine","Carnitine",3,0.704734249875061,0.00796019900497512,1,8,FALSE,""
+"Acetylcarnitine","Acetylcarnitine",5,1.12088277749857,0.0123825317855169,1,2,FALSE,""
+"Propionylcarnitine","Propionylcarnitine",3,0.732611467660956,0.00486456605859591,1,7,FALSE,""
+"Cholate","Cholate",7,1.79518884641831,0.0310668877833057,1,9,FALSE,""
+"Deoxycholate","Deoxycholate",7,1.7243282109165,0.0307352128247651,1,6,FALSE,""
+"Glycocholate","Glycocholate",6,1.39276453541898,0.0174682144831399,1,2,FALSE,""
+"Taurocholate","Taurocholate",2,0.428234154281,0.00232172470978441,1,1,FALSE,""
+"Adenosine","Adenosine",5,1.12787912112753,0.0133775566611388,1,10,FALSE,""
+"Guanosine","Guanosine",4,1.00562212285569,0.0177998894416805,1,8,FALSE,""
+"Uridine","Uridine",9,2.09682630461216,0.0545052515201769,1,2,FALSE,"Uridine"
+"Cytidine","Cytidine",6,1.34974396760233,0.0211166390270868,1,2,FALSE,""
+"Hypoxanthine","Hypoxanthine",4,1.12562423691588,0.0306246545052515,1,4,FALSE,""
+"Xanthosine","Xanthosine",0,0,0,2,0,TRUE,""
+"Uric_acid","Uric acid",4,0.968635074477341,0.00995024875621891,1,1,FALSE,""
+"Allantoin","Allantoin",7,1.66736373648969,0.0393587617468215,1,4,FALSE,""
+"Nicotinamide","Nicotinamide",7,1.6282632316572,0.0315091210613599,1,1,FALSE,""
+"Pantothenate","Pantothenate",6,1.29231627473507,0.00972913211719182,1,10,FALSE,""
+"Riboflavin","Riboflavin",3,0.652404169201136,0.00176893311221669,1,2,FALSE,""
+"Pyridoxal","Pyridoxal",2,0.488247607305936,0.00375898286346048,1,1,FALSE,""
+"Thiamine","Thiamine",3,0.671925476403573,0.00099502487562189,1,3,FALSE,""
+"Ascorbate","Ascorbate",2,0.49330084326106,0.00121614151464898,1,2,FALSE,""
+"Alpha_tocopherol","Alpha tocopherol",7,1.62788987065617,0.0213377556661139,1,3,FALSE,""
+"Gamma_glutamylalanine","Gamma glutamylalanine",7,1.69924398044479,0.03681592039801,1,4,FALSE,""
+"Gamma_glutamylglutamate","Gamma glutamylglutamate",6,1.41620176107958,0.0197899391929243,1,7,FALSE,""
+"Cysteinylglycine","Cysteinylglycine",4,0.896850087943178,0.00995024875621891,1,8,FALSE,""
+"Caffeine","Caffeine",3,0.695138974181829,0.00464344941956882,1,1,FALSE,""
+"Paraxanthine","Paraxanthine",8,2.0594277960801,0.0455500276395799,1,3,FALSE,"Paraxanthine"
+"Theobromine","Theobromine",7,1.5455918265393,0.019126589275843,1,4,FALSE,""
+"Hippurate","Hippurate",6,1.29143920657246,0.0177998894416805,1,4,FALSE,""
+"Salicylate","Salicylate",6,1.32242104530694,0.0139303482587065,1,7,FALSE,""
+"Citrate","Citrate",6,1.32706691953615,0.0102819237147595,1,7,FALSE,""
+"Succinate","Succinate",5,1.13773512651317,0.0109452736318408,1,3,FALSE,""
+"Fumarate","Fumarate",7,1.60058227266827,0.026644555002764,1,4,FALSE,""
+"Alpha_ketoglutarate","Alpha ketoglutarate",4,0.831110090862168,0.00950801547816473,1,1,FALSE,""

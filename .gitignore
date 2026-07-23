@@ -25,3 +25,4 @@ task1/Phase 4/outputs/*.pheno
 task1/Phase 4/outputs/*.covar
 task1/Phase 5/outputs/*.assoc.logistic
 task1/Phase 5/outputs/*.pheno
+task1/Phase 5/outputs/*.covar

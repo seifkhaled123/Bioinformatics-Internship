@@ -1,0 +1,5 @@
+"Threshold","Edges","Connected_metabolites","Isolates","Components","Largest_component"
+0.15,1076,136,0,1,136
+0.2,328,135,1,2,135
+0.25,69,88,48,67,17
+0.3,15,28,108,121,3

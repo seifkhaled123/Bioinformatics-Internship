@@ -1,0 +1,4 @@
+"Analysis","Model","Tests","Bonferroni_threshold","Significant_variants","Gene_labels","File"
+"PC1","linear",67735,7.38170812726065e-07,2485,23,"PC1_gene_labeled_manhattan.png"
+"PC2","linear",67735,7.38170812726065e-07,118,22,"PC2_gene_labeled_manhattan.png"
+"Sex","logistic",67718,7.38356123925692e-07,0,0,"Sex_gene_labeled_manhattan.png"

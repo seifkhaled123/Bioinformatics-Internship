@@ -1,0 +1,511 @@
+{
+  "title" : "Phase14_Metabolite_Final",
+  "defaults" : [ {
+    "visualProperty" : "COMPOUND_NODE_PADDING",
+    "value" : 10.0
+  }, {
+    "visualProperty" : "COMPOUND_NODE_SHAPE",
+    "value" : "ROUND_RECTANGLE"
+  }, {
+    "visualProperty" : "DING_RENDERING_ENGINE_ROOT",
+    "value" : "org.cytoscape.view.presentation.property.NullVisualProperty$NullDataTypeImpl@31452e6f"
+  }, {
+    "visualProperty" : "EDGE",
+    "value" : "DefaultVisualizableVisualProperty(id=EDGE, name=Edge Visual Property)"
+  }, {
+    "visualProperty" : "EDGE_BEND",
+    "value" : null
+  }, {
+    "visualProperty" : "EDGE_CURVED",
+    "value" : false
+  }, {
+    "visualProperty" : "EDGE_LABEL",
+    "value" : ""
+  }, {
+    "visualProperty" : "EDGE_LABEL_AUTOROTATE",
+    "value" : false
+  }, {
+    "visualProperty" : "EDGE_LABEL_BACKGROUND_COLOR",
+    "value" : "#B6B6B6"
+  }, {
+    "visualProperty" : "EDGE_LABEL_BACKGROUND_SHAPE",
+    "value" : "NONE"
+  }, {
+    "visualProperty" : "EDGE_LABEL_BACKGROUND_TRANSPARENCY",
+    "value" : 255
+  }, {
+    "visualProperty" : "EDGE_LABEL_COLOR",
+    "value" : "#000000"
+  }, {
+    "visualProperty" : "EDGE_LABEL_FONT_FACE",
+    "value" : "SansSerif.plain,plain,10"
+  }, {
+    "visualProperty" : "EDGE_LABEL_FONT_SIZE",
+    "value" : 10
+  }, {
+    "visualProperty" : "EDGE_LABEL_POSITION",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "EDGE_LABEL_ROTATION",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "EDGE_LABEL_TRANSPARENCY",
+    "value" : 255
+  }, {
+    "visualProperty" : "EDGE_LABEL_WIDTH",
+    "value" : 200.0
+  }, {
+    "visualProperty" : "EDGE_LINE_TYPE",
+    "value" : "SOLID"
+  }, {
+    "visualProperty" : "EDGE_PAINT",
+    "value" : "#808080"
+  }, {
+    "visualProperty" : "EDGE_SELECTED",
+    "value" : false
+  }, {
+    "visualProperty" : "EDGE_SELECTED_PAINT",
+    "value" : "#FF0000"
+  }, {
+    "visualProperty" : "EDGE_SOURCE_ARROW_SELECTED_PAINT",
+    "value" : "#FFFF00"
+  }, {
+    "visualProperty" : "EDGE_SOURCE_ARROW_SHAPE",
+    "value" : "NONE"
+  }, {
+    "visualProperty" : "EDGE_SOURCE_ARROW_SIZE",
+    "value" : 6.0
+  }, {
+    "visualProperty" : "EDGE_SOURCE_ARROW_UNSELECTED_PAINT",
+    "value" : "#000000"
+  }, {
+    "visualProperty" : "EDGE_STACKING",
+    "value" : "AUTO_BEND"
+  }, {
+    "visualProperty" : "EDGE_STACKING_DENSITY",
+    "value" : 0.5
+  }, {
+    "visualProperty" : "EDGE_STROKE_SELECTED_PAINT",
+    "value" : "#FF0000"
+  }, {
+    "visualProperty" : "EDGE_STROKE_UNSELECTED_PAINT",
+    "value" : "#8A98A8"
+  }, {
+    "visualProperty" : "EDGE_TARGET_ARROW_SELECTED_PAINT",
+    "value" : "#FFFF00"
+  }, {
+    "visualProperty" : "EDGE_TARGET_ARROW_SHAPE",
+    "value" : "NONE"
+  }, {
+    "visualProperty" : "EDGE_TARGET_ARROW_SIZE",
+    "value" : 6.0
+  }, {
+    "visualProperty" : "EDGE_TARGET_ARROW_UNSELECTED_PAINT",
+    "value" : "#000000"
+  }, {
+    "visualProperty" : "EDGE_TOOLTIP",
+    "value" : ""
+  }, {
+    "visualProperty" : "EDGE_TRANSPARENCY",
+    "value" : 100
+  }, {
+    "visualProperty" : "EDGE_UNSELECTED_PAINT",
+    "value" : "#8A98A8"
+  }, {
+    "visualProperty" : "EDGE_VISIBLE",
+    "value" : true
+  }, {
+    "visualProperty" : "EDGE_WIDTH",
+    "value" : 1.0
+  }, {
+    "visualProperty" : "EDGE_Z_ORDER",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NETWORK",
+    "value" : "DefaultVisualizableVisualProperty(id=NETWORK, name=Network Visual Property)"
+  }, {
+    "visualProperty" : "NETWORK_ANNOTATION_SELECTION",
+    "value" : false
+  }, {
+    "visualProperty" : "NETWORK_BACKGROUND_PAINT",
+    "value" : "#FFFFFF"
+  }, {
+    "visualProperty" : "NETWORK_CENTER_X_LOCATION",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NETWORK_CENTER_Y_LOCATION",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NETWORK_CENTER_Z_LOCATION",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NETWORK_DEPTH",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NETWORK_EDGE_SELECTION",
+    "value" : true
+  }, {
+    "visualProperty" : "NETWORK_FORCE_HIGH_DETAIL",
+    "value" : false
+  }, {
+    "visualProperty" : "NETWORK_HEIGHT",
+    "value" : 400.0
+  }, {
+    "visualProperty" : "NETWORK_NODE_LABEL_SELECTION",
+    "value" : false
+  }, {
+    "visualProperty" : "NETWORK_NODE_SELECTION",
+    "value" : true
+  }, {
+    "visualProperty" : "NETWORK_SCALE_FACTOR",
+    "value" : 1.0
+  }, {
+    "visualProperty" : "NETWORK_SIZE",
+    "value" : 550.0
+  }, {
+    "visualProperty" : "NETWORK_TITLE",
+    "value" : ""
+  }, {
+    "visualProperty" : "NETWORK_WIDTH",
+    "value" : 550.0
+  }, {
+    "visualProperty" : "NODE",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE, name=Node Visual Property)"
+  }, {
+    "visualProperty" : "NODE_BORDER_PAINT",
+    "value" : "#FFFFFF"
+  }, {
+    "visualProperty" : "NODE_BORDER_STROKE",
+    "value" : "SOLID"
+  }, {
+    "visualProperty" : "NODE_BORDER_TRANSPARENCY",
+    "value" : 255
+  }, {
+    "visualProperty" : "NODE_BORDER_WIDTH",
+    "value" : 1.5
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_1",
+    "value" : "org.cytoscape.cg.model.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_2",
+    "value" : "org.cytoscape.cg.model.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_3",
+    "value" : "org.cytoscape.cg.model.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_4",
+    "value" : "org.cytoscape.cg.model.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_5",
+    "value" : "org.cytoscape.cg.model.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_6",
+    "value" : "org.cytoscape.cg.model.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_7",
+    "value" : "org.cytoscape.cg.model.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_8",
+    "value" : "org.cytoscape.cg.model.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_9",
+    "value" : "org.cytoscape.cg.model.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_1",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_2",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_3",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_4",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_5",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_6",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_7",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_8",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_9",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_1",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_2",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_3",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_4",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_5",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_6",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_7",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_8",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_9",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_1",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_1, name=Node Custom Paint 1)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_2",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_2, name=Node Custom Paint 2)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_3",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_3, name=Node Custom Paint 3)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_4",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_4, name=Node Custom Paint 4)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_5",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_5, name=Node Custom Paint 5)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_6",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_6, name=Node Custom Paint 6)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_7",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_7, name=Node Custom Paint 7)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_8",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_8, name=Node Custom Paint 8)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_9",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_9, name=Node Custom Paint 9)"
+  }, {
+    "visualProperty" : "NODE_DEPTH",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_FILL_COLOR",
+    "value" : "#6C5CE7"
+  }, {
+    "visualProperty" : "NODE_HEIGHT",
+    "value" : 40.0
+  }, {
+    "visualProperty" : "NODE_LABEL",
+    "value" : ""
+  }, {
+    "visualProperty" : "NODE_LABEL_BACKGROUND_COLOR",
+    "value" : "#FFFFFF"
+  }, {
+    "visualProperty" : "NODE_LABEL_BACKGROUND_SHAPE",
+    "value" : "RECTANGLE"
+  }, {
+    "visualProperty" : "NODE_LABEL_BACKGROUND_TRANSPARENCY",
+    "value" : 205
+  }, {
+    "visualProperty" : "NODE_LABEL_COLOR",
+    "value" : "#17324D"
+  }, {
+    "visualProperty" : "NODE_LABEL_FONT_FACE",
+    "value" : "SansSerif.bold,bold,12"
+  }, {
+    "visualProperty" : "NODE_LABEL_FONT_SIZE",
+    "value" : 10
+  }, {
+    "visualProperty" : "NODE_LABEL_POSITION",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_LABEL_ROTATION",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_LABEL_TRANSPARENCY",
+    "value" : 255
+  }, {
+    "visualProperty" : "NODE_LABEL_WIDTH",
+    "value" : 220.0
+  }, {
+    "visualProperty" : "NODE_NESTED_NETWORK_IMAGE_VISIBLE",
+    "value" : true
+  }, {
+    "visualProperty" : "NODE_PAINT",
+    "value" : "#787878"
+  }, {
+    "visualProperty" : "NODE_SELECTED",
+    "value" : false
+  }, {
+    "visualProperty" : "NODE_SELECTED_PAINT",
+    "value" : "#FFFF00"
+  }, {
+    "visualProperty" : "NODE_SHAPE",
+    "value" : "ELLIPSE"
+  }, {
+    "visualProperty" : "NODE_SIZE",
+    "value" : 35.0
+  }, {
+    "visualProperty" : "NODE_TOOLTIP",
+    "value" : ""
+  }, {
+    "visualProperty" : "NODE_TRANSPARENCY",
+    "value" : 255
+  }, {
+    "visualProperty" : "NODE_VISIBLE",
+    "value" : true
+  }, {
+    "visualProperty" : "NODE_WIDTH",
+    "value" : 60.0
+  }, {
+    "visualProperty" : "NODE_X_LOCATION",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_Y_LOCATION",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_Z_LOCATION",
+    "value" : 0.0
+  } ],
+  "mappings" : [ {
+    "mappingType" : "passthrough",
+    "mappingColumn" : "Hub_label",
+    "mappingColumnType" : "String",
+    "visualProperty" : "NODE_LABEL"
+  }, {
+    "mappingType" : "discrete",
+    "mappingColumn" : "Community",
+    "mappingColumnType" : "Integer",
+    "visualProperty" : "NODE_FILL_COLOR",
+    "map" : [ {
+      "key" : "0",
+      "value" : "#B8C2CC"
+    }, {
+      "key" : "1",
+      "value" : "#3B0F70"
+    }, {
+      "key" : "2",
+      "value" : "#6C1E91"
+    }, {
+      "key" : "3",
+      "value" : "#932B8E"
+    }, {
+      "key" : "4",
+      "value" : "#B73779"
+    }, {
+      "key" : "5",
+      "value" : "#D64A5F"
+    }, {
+      "key" : "6",
+      "value" : "#EE6045"
+    }, {
+      "key" : "7",
+      "value" : "#FA7E24"
+    }, {
+      "key" : "8",
+      "value" : "#FCA636"
+    }, {
+      "key" : "9",
+      "value" : "#F6D746"
+    }, {
+      "key" : "10",
+      "value" : "#CBE34E"
+    }, {
+      "key" : "11",
+      "value" : "#7AD151"
+    } ]
+  }, {
+    "mappingType" : "continuous",
+    "mappingColumn" : "abs_partial_correlation",
+    "mappingColumnType" : "Double",
+    "visualProperty" : "EDGE_WIDTH",
+    "points" : [ {
+      "value" : 0.2,
+      "lesser" : "0.8",
+      "equal" : "0.8",
+      "greater" : "0.8"
+    }, {
+      "value" : 0.28,
+      "lesser" : "4.0",
+      "equal" : "4.0",
+      "greater" : "4.0"
+    }, {
+      "value" : 0.3631,
+      "lesser" : "8.0",
+      "equal" : "8.0",
+      "greater" : "8.0"
+    } ]
+  }, {
+    "mappingType" : "discrete",
+    "mappingColumn" : "sign",
+    "mappingColumnType" : "String",
+    "visualProperty" : "EDGE_UNSELECTED_PAINT",
+    "map" : [ {
+      "key" : "Negative",
+      "value" : "#D1495B"
+    }, {
+      "key" : "Positive",
+      "value" : "#087E8B"
+    } ]
+  }, {
+    "mappingType" : "continuous",
+    "mappingColumn" : "Degree",
+    "mappingColumnType" : "Integer",
+    "visualProperty" : "NODE_SIZE",
+    "points" : [ {
+      "value" : 0.0,
+      "lesser" : "18.0",
+      "equal" : "18.0",
+      "greater" : "18.0"
+    }, {
+      "value" : 5.0,
+      "lesser" : "35.0",
+      "equal" : "35.0",
+      "greater" : "35.0"
+    }, {
+      "value" : 11.0,
+      "lesser" : "65.0",
+      "equal" : "65.0",
+      "greater" : "65.0"
+    } ]
+  }, {
+    "mappingType" : "continuous",
+    "mappingColumn" : "abs_partial_correlation",
+    "mappingColumnType" : "Double",
+    "visualProperty" : "EDGE_TRANSPARENCY",
+    "points" : [ {
+      "value" : 0.2,
+      "lesser" : "45",
+      "equal" : "45",
+      "greater" : "45"
+    }, {
+      "value" : 0.28,
+      "lesser" : "140",
+      "equal" : "140",
+      "greater" : "140"
+    }, {
+      "value" : 0.3631,
+      "lesser" : "225",
+      "equal" : "225",
+      "greater" : "225"
+    } ]
+  }, {
+    "mappingType" : "discrete",
+    "mappingColumn" : "sign",
+    "mappingColumnType" : "String",
+    "visualProperty" : "EDGE_STROKE_UNSELECTED_PAINT",
+    "map" : [ {
+      "key" : "Negative",
+      "value" : "#D1495B"
+    }, {
+      "key" : "Positive",
+      "value" : "#087E8B"
+    } ]
+  } ]
+}

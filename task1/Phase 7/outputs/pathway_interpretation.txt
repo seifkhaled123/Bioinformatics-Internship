@@ -1,0 +1,4 @@
+No GO Biological Process pathway passed BH-adjusted p < 0.05 for either PC1 or PC2.
+Therefore, there is no statistically supported enriched pathway to interpret as biologically plausible for population structure.
+The leading terms shown in the dot plot are exploratory and non-significant;
+moreover, the PC associations are descriptive because the PCs were calculated from the same genotype matrix.

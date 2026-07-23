@@ -1,7 +1,7 @@
 source("professional_helpers.R")
 
 source("functions.R")
-require_packages(c("readxl", "dplyr", "tidyr", "ggplot2", "glmnet", "randomForest", "pROC", "caret", "igraph"))
+require_packages(c("readxl", "dplyr", "tidyr", "ggplot2", "glmnet", "randomForest", "pROC", "caret", "igraph", "ggrepel"))
 suppressPackageStartupMessages({
   library(dplyr); library(tidyr); library(ggplot2)
 })
@@ -155,24 +155,212 @@ phase14 <- function() {
   dat <- read_qc_data(scaled = FALSE)
   x <- scale(dat[, -(1:2), drop = FALSE])
   n <- nrow(x); p <- ncol(x)
-  # Ridge-regularised precision matrix: stable for p close to n. This is an exploratory network.
+  edge_threshold <- .20
+
+  # Ridge regularisation limits the covariance condition number to approximately 100.
+  # The resulting graph is exploratory; the edge threshold is not a formal significance test.
   s <- cov(x)
   eig <- eigen(s, symmetric = TRUE, only.values = TRUE)$values
   ridge <- max(0, (max(eig) - 100 * min(eig)) / 99) + 1e-6
   precision <- solve(s + diag(ridge, p))
-  partial <- -cov2cor(precision); diag(partial) <- 1
-  edge_index <- which(upper.tri(partial) & abs(partial) >= .20, arr.ind = TRUE)
-  edges <- data.frame(from = colnames(x)[edge_index[, 1]], to = colnames(x)[edge_index[, 2]], partial_correlation = partial[edge_index], sign = ifelse(partial[edge_index] > 0, "positive", "negative")) |> arrange(desc(abs(partial_correlation)))
+  partial <- -cov2cor(precision)
+  diag(partial) <- 1
+
+  edge_index <- which(upper.tri(partial) & abs(partial) >= edge_threshold, arr.ind = TRUE)
+  edges <- data.frame(
+    from = colnames(x)[edge_index[, 1]],
+    to = colnames(x)[edge_index[, 2]],
+    partial_correlation = partial[edge_index],
+    abs_partial_correlation = abs(partial[edge_index]),
+    sign = ifelse(partial[edge_index] > 0, "Positive", "Negative")
+  ) |>
+    arrange(desc(abs_partial_correlation))
   graph <- igraph::graph_from_data_frame(edges, directed = FALSE, vertices = data.frame(name = colnames(x)))
-  nodes <- data.frame(Metabolite = igraph::V(graph)$name, Degree = igraph::degree(graph), Betweenness = igraph::betweenness(graph, normalized = TRUE), Component = igraph::components(graph)$membership)
+  graph_degree <- igraph::degree(graph)
+  graph_strength <- igraph::strength(graph, weights = igraph::E(graph)$abs_partial_correlation)
+  graph_betweenness <- igraph::betweenness(
+    graph, directed = FALSE,
+    weights = 1 / pmax(igraph::E(graph)$abs_partial_correlation, 1e-6),
+    normalized = TRUE
+  )
+  graph_components <- igraph::components(graph)
+
+  active_graph <- igraph::induced_subgraph(graph, vids = igraph::V(graph)[graph_degree > 0])
+  communities <- igraph::cluster_louvain(active_graph, weights = igraph::E(active_graph)$abs_partial_correlation)
+  raw_membership <- igraph::membership(communities)
+  community_sizes <- sort(table(raw_membership), decreasing = TRUE)
+  community_map <- setNames(seq_along(community_sizes), names(community_sizes))
+  ordered_membership <- as.integer(community_map[as.character(raw_membership)])
+  names(ordered_membership) <- names(raw_membership)
+
+  nodes <- data.frame(
+    Metabolite = igraph::V(graph)$name,
+    Display_name = gsub("_", " ", igraph::V(graph)$name),
+    Degree = as.integer(graph_degree),
+    Strength = as.numeric(graph_strength),
+    Betweenness = as.numeric(graph_betweenness),
+    Component = as.integer(graph_components$membership),
+    Community = 0L,
+    Isolate = graph_degree == 0,
+    stringsAsFactors = FALSE
+  )
+  nodes$Community[match(names(ordered_membership), nodes$Metabolite)] <- ordered_membership
+  hub_order <- order(-nodes$Degree, -nodes$Strength, -nodes$Betweenness)
+  hub_names_for_labels <- nodes$Metabolite[head(hub_order, 10)]
+  nodes$Hub_label <- ifelse(nodes$Metabolite %in% hub_names_for_labels, nodes$Display_name, "")
+
+  set.seed(20260722)
+  layout <- igraph::layout_with_fr(
+    active_graph,
+    weights = igraph::E(active_graph)$abs_partial_correlation,
+    niter = 4000
+  )
+  layout <- igraph::norm_coords(layout, xmin = -1, xmax = 1, ymin = -1, ymax = 1)
+  node_plot <- data.frame(Metabolite = igraph::V(active_graph)$name, x = layout[, 1], y = layout[, 2]) |>
+    left_join(nodes, by = "Metabolite") |>
+    mutate(Community = factor(Community))
+  active_edges <- igraph::as_data_frame(active_graph, what = "edges")
+  edge_plot <- active_edges |>
+    left_join(transmute(node_plot, from = Metabolite, x_from = x, y_from = y), by = "from") |>
+    left_join(transmute(node_plot, to = Metabolite, x_to = x, y_to = y), by = "to")
+  label_nodes <- node_plot |>
+    arrange(desc(Degree), desc(Strength)) |>
+    slice_head(n = 10)
+
+  network_plot <- ggplot() +
+    geom_segment(
+      data = edge_plot,
+      aes(x_from, y_from, xend = x_to, yend = y_to, colour = sign, linewidth = abs_partial_correlation, alpha = abs_partial_correlation),
+      lineend = "round"
+    ) +
+    geom_point(
+      data = node_plot,
+      aes(x, y, size = Degree, fill = Community),
+      shape = 21, colour = "white", stroke = .6
+    ) +
+    ggrepel::geom_text_repel(
+      data = label_nodes,
+      aes(x, y, label = Display_name),
+      seed = 42, size = 3.25, fontface = "bold", colour = "#17324D",
+      box.padding = .55, point.padding = .35, min.segment.length = 0,
+      max.overlaps = Inf, max.time = 10, max.iter = 20000, force = 5, force_pull = .1, segment.colour = "#8A98A8", segment.alpha = .7
+    ) +
+    scale_colour_manual(values = c(Positive = "#087E8B", Negative = "#D1495B"), name = "Edge sign") +
+    scale_fill_viridis_d(option = "C", begin = .08, end = .9, guide = "none") +
+    scale_size_continuous(range = c(2.5, 9), breaks = c(2, 5, 8, 11), name = "Node degree") +
+    scale_linewidth_continuous(range = c(.25, 1.7), breaks = c(.20, .25, .30, .35), name = "|Partial r|") +
+    scale_alpha_continuous(range = c(.18, .72), guide = "none") +
+    coord_equal(clip = "off") +
+    labs(
+      title = "Metabolite partial-correlation network",
+      subtitle = sprintf("%d connected metabolites · %d edges at |partial r| ≥ %.2f · labels show 10 topology hubs", igraph::vcount(active_graph), igraph::ecount(active_graph), edge_threshold),
+      caption = "Ridge-regularised estimate. Communities reflect graph topology, not curated pathways. Isolates remain in the exported node table."
+    ) +
+    theme_void(base_size = 12) +
+    theme(
+      plot.title = element_text(face = "bold", size = 20, colour = "#17324D"),
+      plot.subtitle = element_text(size = 11.5, colour = "#526777", margin = margin(b = 12)),
+      plot.caption = element_text(size = 9, colour = "#66788A", hjust = 0),
+      legend.position = "bottom",
+      legend.box = "horizontal",
+      plot.margin = margin(18, 28, 14, 28)
+    ) +
+    guides(
+      size = guide_legend(order = 1),
+      colour = guide_legend(order = 2, override.aes = list(linewidth = 1.4)),
+      linewidth = guide_legend(order = 3)
+    )
+  save_plot(network_plot, file.path(out_dir(14), "partial_correlation_network.png"), 13, 10)
+
+  strongest_edges <- slice_head(edges, n = min(30, nrow(edges)))
+  strong_graph <- igraph::graph_from_data_frame(strongest_edges, directed = FALSE)
+  set.seed(20260722)
+  strong_layout <- igraph::layout_with_kk(strong_graph, weights = 1 / igraph::E(strong_graph)$abs_partial_correlation)
+  strong_layout <- igraph::norm_coords(strong_layout, xmin = -1, xmax = 1, ymin = -1, ymax = 1)
+  strong_nodes <- data.frame(Metabolite = igraph::V(strong_graph)$name, x = strong_layout[, 1], y = strong_layout[, 2]) |>
+    left_join(nodes, by = "Metabolite") |>
+    mutate(Community = factor(Community))
+  strong_edge_plot <- igraph::as_data_frame(strong_graph, what = "edges") |>
+    left_join(transmute(strong_nodes, from = Metabolite, x_from = x, y_from = y), by = "from") |>
+    left_join(transmute(strong_nodes, to = Metabolite, x_to = x, y_to = y), by = "to")
+  strong_plot <- ggplot() +
+    geom_segment(
+      data = strong_edge_plot,
+      aes(x_from, y_from, xend = x_to, yend = y_to, colour = sign, linewidth = abs_partial_correlation),
+      alpha = .65, lineend = "round"
+    ) +
+    geom_point(data = strong_nodes, aes(x, y, fill = Community), shape = 21, size = 5.2, colour = "white", stroke = .7) +
+    ggrepel::geom_text_repel(
+      data = strong_nodes, aes(x, y, label = Display_name), seed = 42,
+      size = 3.15, colour = "#17324D", box.padding = .5, point.padding = .3,
+      min.segment.length = 0, max.overlaps = Inf, max.time = 5, force = 1.5, segment.colour = "#9AA7B5"
+    ) +
+    scale_colour_manual(values = c(Positive = "#087E8B", Negative = "#D1495B"), name = "Edge sign") +
+    scale_fill_viridis_d(option = "C", begin = .08, end = .9, guide = "none") +
+    scale_linewidth_continuous(range = c(.7, 2.3), breaks = c(.28, .30, .32, .34, .36), name = "|Partial r|") +
+    coord_equal(clip = "off") +
+    labs(
+      title = "Thirty strongest conditional metabolite relationships",
+      subtitle = "Focused view for readable metabolite labels; edge colour shows sign and width shows absolute partial correlation",
+      caption = "This focused view is a visual subset of the complete |partial r| ≥ 0.20 network."
+    ) +
+    theme_void(base_size = 12) +
+    theme(
+      plot.title = element_text(face = "bold", size = 20, colour = "#17324D"),
+      plot.subtitle = element_text(size = 11.5, colour = "#526777", margin = margin(b = 12)),
+      plot.caption = element_text(size = 9, colour = "#66788A", hjust = 0),
+      legend.position = "bottom",
+      plot.margin = margin(20, 35, 16, 35)
+    )
+  save_plot(strong_plot, file.path(out_dir(14), "partial_correlation_network_strongest_edges.png"), 13, 10)
+
+  sensitivity <- bind_rows(lapply(c(.15, .20, .25, .30), function(threshold) {
+    idx <- which(upper.tri(partial) & abs(partial) >= threshold, arr.ind = TRUE)
+    threshold_edges <- data.frame(from = colnames(x)[idx[, 1]], to = colnames(x)[idx[, 2]])
+    threshold_graph <- igraph::graph_from_data_frame(threshold_edges, directed = FALSE, vertices = data.frame(name = colnames(x)))
+    threshold_degree <- igraph::degree(threshold_graph)
+    threshold_components <- igraph::components(threshold_graph)
+    data.frame(
+      Threshold = threshold,
+      Edges = igraph::ecount(threshold_graph),
+      Connected_metabolites = sum(threshold_degree > 0),
+      Isolates = sum(threshold_degree == 0),
+      Components = threshold_components$no,
+      Largest_component = max(threshold_components$csize)
+    )
+  }))
+  hub_table <- nodes |>
+    filter(!Isolate) |>
+    arrange(desc(Degree), desc(Strength), desc(Betweenness)) |>
+    slice_head(n = 20)
+  hub_names <- paste(head(hub_table$Display_name, 5), collapse = ", ")
+  interpretation <- paste0(
+    "At |partial r| ≥ 0.20, the ridge-regularised network contains ", nrow(edges),
+    " edges among ", igraph::vcount(active_graph), " connected metabolites, with ", sum(nodes$Isolate),
+    " isolate. The highest-degree hubs are ", hub_names,
+    ". Several prominent hubs are lipid-related metabolites, while amino-acid and nucleotide intermediates also occur among central nodes, a qualitatively plausible pattern for coordinated metabolism. However, communities are topology-derived rather than curated pathway assignments, the 0.20 threshold is heuristic, and no bootstrap stability or external replication was performed; hub and pathway interpretations therefore remain exploratory."
+  )
+
   write.csv(partial, file.path(out_dir(14), "ridge_partial_correlation_matrix.csv"))
+  igraph::write_graph(graph, file.path(out_dir(14), "metabolite_network.graphml"), format = "graphml")
   write_csv(edges, 14, "cytoscape_edge_list.csv")
   write_csv(nodes, 14, "cytoscape_node_table.csv")
-  write_csv(data.frame(Samples = n, Metabolites = p, Ridge_penalty = ridge, Edge_threshold = .20, Edges = nrow(edges), Method = "ridge-regularised partial correlation"), 14, "network_parameters.csv")
-  set.seed(20260722)
-  png(file.path(out_dir(14), "partial_correlation_network.png"), width = 2400, height = 2100, res = 260)
-  plot(graph, layout = igraph::layout_with_fr(graph), vertex.size = 4 + sqrt(igraph::degree(graph)) * 2, vertex.label.cex = .55, vertex.color = "#78B7C5", edge.width = 1 + 4 * abs(igraph::E(graph)$partial_correlation), edge.color = ifelse(igraph::E(graph)$sign == "positive", "#0072B2", "#B22222"), main = "Ridge partial-correlation network (|r| ≥ 0.20)")
-  dev.off()
+  write_csv(hub_table, 14, "network_hubs.csv")
+  write_csv(sensitivity, 14, "network_threshold_sensitivity.csv")
+  writeLines(interpretation, file.path(out_dir(14), "network_interpretation.txt"))
+  write_csv(data.frame(
+    Samples = n,
+    Metabolites = p,
+    Ridge_penalty = ridge,
+    Edge_threshold = edge_threshold,
+    Edges = nrow(edges),
+    Connected_metabolites = igraph::vcount(active_graph),
+    Isolates = sum(nodes$Isolate),
+    Positive_edges = sum(edges$sign == "Positive"),
+    Negative_edges = sum(edges$sign == "Negative"),
+    Topology_communities = length(unique(ordered_membership)),
+    Method = "ridge-regularised partial correlation"
+  ), 14, "network_parameters.csv")
   write_session_info(file.path(out_dir(14), "sessionInfo.txt"))
 }
 

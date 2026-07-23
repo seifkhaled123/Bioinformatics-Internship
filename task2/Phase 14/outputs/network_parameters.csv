@@ -1,2 +1,2 @@
-"Samples","Metabolites","Ridge_penalty","Edge_threshold","Edges","Method"
-156,136,0.0758055463709817,0.2,328,"ridge-regularised partial correlation"
+"Samples","Metabolites","Ridge_penalty","Edge_threshold","Edges","Connected_metabolites","Isolates","Positive_edges","Negative_edges","Topology_communities","Method"
+156,136,0.0758055463709817,0.2,328,135,1,183,145,10,"ridge-regularised partial correlation"

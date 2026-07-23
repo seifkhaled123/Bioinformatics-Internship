@@ -1,23 +1,39 @@
-# Phase 6: Gene and Functional Annotation of Significant SNPs
+# Phase 6: Gene and Functional Annotation
 
-**Objective:** Map significant SNPs from Phase 4 to genes and functional annotations.
+Phase 6 selects the strongest Bonferroni-significant locus on each chromosome for each
+descriptive PC association scan, then annotates those observed rsIDs with Ensembl VEP.
 
-*(Note regarding the syllabus: The logistic regression for Sex generated no genome-wide significant hits on the autosomal chromosomes, as proved in Phase 5. Therefore, gene-labeling is strictly applied to the mathematically significant Phase 4 Ancestry model).*
+The original PLINK coordinates are NCBI36/hg18. This was confirmed by eight sampled rsID
+and position matches against the UCSC hg18 dbSNP130 track and is recorded in
+`../data/genome_build.tsv`. Ensembl remaps each stable rsID to GRCh38 for current gene and
+consequence annotation. Both source and current coordinates are retained in the output.
+If VEP provides no named consequence gene, the script finds the nearest GRCh38
+protein-coding gene within 1 Mb and records the mapping type and distance.
 
-### 1. Manhattan Plots
-*See attached `outputs/Manhattan_PC1.jpg` (Labeled) and `outputs/Manhattan_Sex.jpg` (Unlabeled).*
-![Manhattan PC1 plot](outputs/Manhattan_PC1.jpg)
-![Manhattan Sex plot](outputs/Manhattan_Sex.jpg)
+Run from `task1`:
 
+```bash
+Rscript professional_pipeline.R 6
+```
 
-### 2. Annotated Top Hits Table (PC1 Ancestry Markers)
+Current result: all 45 lead loci were mapped to named genes. Of these, 27 use a direct VEP
+The final Manhattan deliverables include gene-labeled PC1 and PC2 linear plots plus a
+sex-logistic plot. The logistic scan has no Bonferroni-significant variants, so its figure
+correctly has no gene labels and states that null result.
+consequence gene and 18 use an explicitly labelled nearest protein-coding gene.
 
-| SNP (rsID) | Chromosome | Position (bp) | Nearest Gene | Functional Consequence | Distance / Context |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **rs10466604** | 11 | 124159136 | *ROBO3* | Intronic Variant | Intersects Roundabout Guidance Receptor 3 |
-| **rs335339** | 4 | 62013467 | *PDGFRA* | Intronic / Regulatory | Intersects Platelet-derived growth factor receptor |
-| **rs7355960** | 3 | 180566740 | *SOX2* | Downstream Gene Variant | Intergenic / Near SRY-box transcription factor 2 |
-| **rs16857866** | 2 | 11828169 | *TGOLN2* | Intronic Variant | Intersects Trans-golgi network protein 2 |
-| **rs1841575** | 15 | 51886958 | *GABRG3* | Intronic Variant | Intersects Gamma-aminobutyric acid receptor |
+Deliverables:
 
-**Biological Plausibility Check:** The top SNPs driving the principal components of ancestry are heavily localized in intronic (non-coding) regulatory regions of genes involved in structural development and receptor signaling. This is expected, as ancestral divergence is typically driven by deep regulatory mutations rather than direct, lethal exonic mutations.
+- `outputs/annotation_input_lead_loci.csv`: reproducible lead-locus selection.
+- `outputs/annotated_lead_genes.csv`: source/current coordinates, gene, mapping type,
+  distance, transcript, consequence, impact, and biotype.
+- `outputs/annotation_summary.csv`: annotation coverage by PC axis.
+- `outputs/PC1_gene_labeled_manhattan.png`: labeled PC1 linear-GWAS Manhattan plot.
+- `outputs/PC2_gene_labeled_manhattan.png`: labeled PC2 linear-GWAS Manhattan plot.
+- `outputs/Sex_gene_labeled_manhattan.png`: final logistic-GWAS Manhattan plot; no labels
+  because there are no significant loci.
+- `outputs/manhattan_plot_summary.csv`: tests, thresholds, significant variants, and label counts.
+- `outputs/annotation_status.txt`: assemblies, method, and interpretation safeguard.
+
+These are associations with PCs calculated from the same genotype matrix. They describe
+population structure and are not independent phenotype discoveries.

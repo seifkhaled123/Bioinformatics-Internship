@@ -32,7 +32,7 @@ Run commands and software assumptions are in [RUNBOOK.md](RUNBOOK.md). Each Task
 
 - Association does not establish causation.
 - Population PCs were built from the same genotypes. PC-GWAS is therefore **descriptive of genetic structure**, not an independent disease-trait discovery study.
-- Genome build information was not confirmed in the supplied material. Variant-to-gene and metabolite-database annotations are deliberately not fabricated.
+- The Task 1 PLINK coordinates were confirmed as NCBI36/hg18 by exact rsID/position checks against the UCSC hg18 dbSNP track. Phase 6 records the source build and uses stable rsIDs for current Ensembl VEP annotation.
 - Multiple-testing results are explicitly labelled as Bonferroni, BH/FDR, or within-trait FDR; these are not interchangeable.
 - The small sample size (n = 156) limits power and external generalisability.
 
@@ -118,9 +118,9 @@ The observed maximum SNP missingness was 0.00641 and maximum sample missingness 
 
 ## Phases 6–7 — annotation and enrichment safeguards
 
-**Decision:** No gene or pathway enrichment result is reported until the genome build and actual variant-to-gene mapping are confirmed. Phase 6 writes the reproducible lead-locus input and Phase 7 refuses hard-coded gene lists.
+**Decision:** The supplied PLINK coordinates were confirmed as NCBI36/hg18. Phase 6 retains those source coordinates and remaps stable rsIDs through Ensembl VEP for current annotation; Phase 7 uses only the resulting observed gene lists. No GO term was BH-significant, so no pathway enrichment is claimed.
 
-**Outputs:** [annotation input](task1/Phase%206/outputs/annotation_input_lead_loci.csv), [annotation status](task1/Phase%206/outputs/annotation_status.txt), and [enrichment status](task1/Phase%207/outputs/enrichment_status.txt).
+**Outputs:** [annotation input](task1/Phase%206/outputs/annotation_input_lead_loci.csv), [annotated genes](task1/Phase%206/outputs/annotated_lead_genes.csv), [PC1 labeled Manhattan](task1/Phase%206/outputs/PC1_gene_labeled_manhattan.png), [PC2 labeled Manhattan](task1/Phase%206/outputs/PC2_gene_labeled_manhattan.png), [sex-logistic Manhattan](task1/Phase%206/outputs/Sex_gene_labeled_manhattan.png), [pathway table](task1/Phase%207/outputs/enriched_pathways.csv), [GO dot plot](task1/Phase%207/outputs/go_enrichment_dotplot.png), and [biological interpretation](task1/Phase%207/outputs/pathway_interpretation.txt).
 
 ---
 
@@ -211,3 +211,16 @@ The observed maximum SNP missingness was 0.00641 and maximum sample missingness 
 ## Phase 14 — metabolite partial-correlation network
 
 **Question:** Which conditional metabolite relationships remain after accounting for all other measured metabolites?
+
+**Method and decisions**
+
+- Used a ridge-regularized precision matrix because 136 metabolites is close to the 156-sample size.
+- Retained edges at exploratory `|partial r| >= 0.20` and exported threshold sensitivity rather than treating the cutoff as a significance test.
+- Weighted betweenness uses inverse absolute partial correlation as graph distance.
+- The complete figure labels only ten hubs; a second figure labels every endpoint of the 30 strongest edges.
+
+**Result:** 328 edges connect 135 metabolites, with one isolate, 183 positive edges, 145 negative edges, and 11 topology-derived communities. Prominent hubs include Enyl palmitoyl oleoyl GPC, Oleate, Uridine, Sphingomyelin d18 1 24 1, and Paraxanthine. These patterns are exploratory and require stability analysis or replication.
+
+**Outputs:** [complete network](task2/Phase%2014/outputs/partial_correlation_network.png), [30 strongest edges](task2/Phase%2014/outputs/partial_correlation_network_strongest_edges.png), [partial-correlation matrix](task2/Phase%2014/outputs/ridge_partial_correlation_matrix.csv), [hub table](task2/Phase%2014/outputs/network_hubs.csv), [threshold sensitivity](task2/Phase%2014/outputs/network_threshold_sensitivity.csv), and [Cytoscape-ready GraphML](task2/Phase%2014/outputs/metabolite_network.graphml).
+
+![Metabolite partial-correlation network](task2/Phase%2014/outputs/partial_correlation_network.png)
